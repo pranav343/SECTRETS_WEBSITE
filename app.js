@@ -35,7 +35,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //mongoDB connection
-mongoose.connect("mongodb://127.0.0.1:27017/userDB")
+mongoose.connect(process.env.MongoDb)
 .then(()=>{console.log("mongoDb connected succesfully")})
 .catch((err)=>{console.log(err)});
 
@@ -43,6 +43,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/userDB")
 const userSchema= new mongoose.Schema({
     email:String,
     password:String,
+    username:String,
     googleId:String,
     facebookId:String,
     secret:String
